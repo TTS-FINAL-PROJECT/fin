@@ -4,7 +4,7 @@ let express = require('express')
 let router = express.Router()
 
 router.get('/', function (req, res) {
-  res.send('yay')
+  res.render(`${__dirname}/views`)
 })
 
 module.exports = router
