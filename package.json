@@ -1,0 +1,41 @@
+{
+  "name": "final-app",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "bsync": "browser-sync start --proxy \"localhost:1337/$app\" --ss \"public\" -f \"app/$app/views\" \"public/$app\"",
+    "coverage": "nyc ava app/**/test/*.js lib/test/*.js",
+    "css": "stylus -u jeet -u rupture -c -w app/$app/src/styles/main.styl --out public/$app/css/main.css",
+    "lint": "standard",
+    "test": "ava app/**/test/**/*.js lib/test/**/*.js",
+    "watch:index": "app=index npm run css | app=index npm run bsync"
+  },
+  "standard": {
+    "ignore": [
+      "public/shared",
+      "app/shared"
+    ]
+  },
+  "dependencies": {
+    "compression": "^1.6.0",
+    "express": "^4.13.3",
+    "express-session": "^1.13.0",
+    "moment": "^2.10.6",
+    "mongoose": "^4.1.10",
+    "morgan": "^1.6.1",
+    "pug": "^2.0.0-beta3",
+    "socket.io": "^1.3.7",
+    "socket.io-client": "^1.3.7",
+    "voorhees": "^1.0.0"
+  },
+  "devDependencies": {
+    "ava": "^0.18.1",
+    "browser-sync": "^2.8.2",
+    "jeet": "^6.1.2",
+    "nyc": "^10.1.2",
+    "rupture": "^0.6.1",
+    "standard": "^8.6.0",
+    "stylus": "^0.54.5",
+    "yargs": "^4.8.1"
+  }
+}
