@@ -17,5 +17,8 @@ module.exports = {
       { test: /\.jsx$/, loader: 'babel-loader', exclude: /node_modules/ }
     ]
   },
+  externals: {
+    socketIO: 'io'
+  },
   watch: true
 }

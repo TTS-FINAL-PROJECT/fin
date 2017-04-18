@@ -1,5 +1,8 @@
+import socket from 'socketIO'
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
+
+console.log('socket', socket)
 
 class App extends Component {
   render () {
