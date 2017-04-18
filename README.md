@@ -1,2 +1,2 @@
 # To get things running:
-`npm start`
+`npm install` then `npm start`
