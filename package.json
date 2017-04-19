@@ -6,12 +6,12 @@
     "bsync": "browser-sync start --proxy \"localhost:1337\" --ss \"public\" -f \"app/index/views\" \"public/index\"",
     "build": "npm run css | npm run js",
     "coverage": "nyc ava app/**/test/*.js lib/test/*.js",
-    "css": "stylus -u jeet -u rupture -c -w app/index/src/css/main.styl --out public/index/css/main.css",
+    "css": "stylus -w app/index/css/main.styl --out public/main.css",
     "js": "webpack --optimize-minimize",
     "lint": "standard",
     "start": "node app.js | npm run watch:index",
     "test": "ava app/**/test/**/*.js lib/test/**/*.js",
-    "watch:index": "app=index npm run js | app=index npm run bsync"
+    "watch:index": "npm run css | npm run js | npm run bsync"
   },
   "standard": {
     "ignore": [
