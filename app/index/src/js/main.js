@@ -6,7 +6,7 @@ console.log('socket', socket)
 
 class ChatItem extends Component {
   render() {
-    return (<li key={this.props.index}>{this.props.author}</li>)
+    return (<li>{this.props.author}</li>)
   }
 }
 
@@ -19,17 +19,11 @@ class Message extends Component {
     }
   }
 
-/*  componentDidMount () {
-    console.log("did mount")
-    this.setState({messages: this.props.messages})
-  }
-*/
-  createList () {
-    console.log("messages", this.props.messages)
-    return this.props.messages.map( (item, index) => {
-      return (<ChatItem author={item.author} key={index} index={index}/>)
+  createList = () => (
+    this.props.messages.map( (item, index) => {
+      return (<ChatItem author={item.author} key={index} />)
     })
-  }
+  )
 
   render() {
     return (
