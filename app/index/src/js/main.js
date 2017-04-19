@@ -27,8 +27,7 @@ class Message extends Component {
   createList () {
     console.log("messages", this.props.messages)
     return this.props.messages.map( (item, index) => {
-      console.log(item)
-      return (<ChatItem author={item.author} index={index}/>)
+      return (<ChatItem author={item.author} key={index} index={index}/>)
     })
   }
 
@@ -50,7 +49,7 @@ class App extends Component {
     this.state = {
       messages: [{
         message: "Hello",
-        user: "Bob"
+        author: "Bob"
       }]
     }
   }
