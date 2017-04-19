@@ -1,0 +1,41 @@
+body {
+  background: #ccc
+  width: 500px;
+  font-family: sans-serif;
+}
+
+#bigger-box {
+  width: 500px;
+  background-color: gray;
+  display: block;
+}
+
+#chat-area {
+  background-color: white;
+  color: black;
+  width: 300px;
+  display: block;
+}
+
+h1 {
+  background-color: blue;
+  color: white;
+  margin: 0px;
+  padding: 10px;
+  text-align: center;
+  display: block;
+}
+
+button {
+  background-color: green;
+  box-shadow:  10px 10px 5px gray;
+  color: black;
+  display: block;
+  padding: 5px;
+}
+
+button:active {
+  box-shadow: disabled;
+  background-color: teal;
+  display: block;
+}
