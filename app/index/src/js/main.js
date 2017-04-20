@@ -41,6 +41,7 @@ class App extends Component {
     super()
 
     this.state = {
+      currentUser: "Person 1",
       messages: [{
         message: "Hello",
         author: "Bob"
@@ -53,7 +54,7 @@ class App extends Component {
   render () {
     return (
       <div className="bigger-box">
-        <h1 className="person">{this.state.messages.user}</h1>
+        <h1 className="person">{this.state.currentUser}</h1>
 
         <div>
 
