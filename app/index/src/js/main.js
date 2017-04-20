@@ -11,13 +11,6 @@ class ChatItem extends Component {
 }
 
 class Message extends Component {
-  constructor() {
-    super()
-
-    this.state = {
-      messages: []
-    }
-  }
 
   createList = () => (
     this.props.messages.map( (item, index) => {
