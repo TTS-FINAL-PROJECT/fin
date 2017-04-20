@@ -9,9 +9,9 @@
     "css": "stylus -w app/index/css/main.styl --out public/main.css",
     "js": "webpack --optimize-minimize",
     "lint": "standard",
-    "start": "node app.js | npm run watch:index",
+    "start": "node app.js",
     "test": "ava app/**/test/**/*.js lib/test/**/*.js",
-    "watch:index": "npm run css | npm run js | npm run bsync"
+    "watch:index": "npm start | npm run build | npm run bsync"
   },
   "standard": {
     "ignore": [
