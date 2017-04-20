@@ -1,8 +1,21 @@
-import socket from 'socketIO'
+import Socket from 'socketIO'
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 
-console.log('socket', socket)
+const socket = Socket()
+
+socket.on('user:in', function (data) {
+  console.log('user data', data)
+})
+
+socket.on('join:new', function (user) {
+  console.log('new user has joined:', user)
+})
+
+socket.emit('message:new', 'wtf')
+socket.on('messages', function (msg) {
+  console.log(`client ${msg}`)
+})
 
 class ChatItem extends Component {
   render() {
@@ -41,6 +54,7 @@ class App extends Component {
     super()
 
     this.state = {
+      currentUser: "Person1",
       messages: [{
         message: "Hello",
         author: "Bob"
@@ -53,7 +67,7 @@ class App extends Component {
   render () {
     return (
       <div className="bigger-box">
-        <h1 className="person">{this.state.messages.user}</h1>
+        <h1 className="person">{this.state.currentUser}</h1>
 
         <div>
 
