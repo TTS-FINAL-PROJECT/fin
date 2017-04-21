@@ -68,12 +68,15 @@ class App extends Component {
   }
 
   componentDidMount () {
+    this.setState({sending: false})
     socket.on('user:in', (data) => {
       this.setState({currentUser: data.currentUser})
     })
 
     socket.on('messages', (msg) => {
       this.setState({messages: msg})
+      this.setState({value:""})
+      this.setState({currentMessage: ""})
     })
   }
 
@@ -83,11 +86,17 @@ class App extends Component {
       author: this.state.currentUser,
       message: this.state.currentMessage
     })
+
   }
 
-handleChange = (event) => {
-  this.setState({currentMessage: event.target.value});
-}
+  getDisplay = () => {
+    return this.state.sending ? this.state.currentMessage : ""
+  }
+
+  handleChange = (event) => {
+    this.setState({currentMessage: event.target.value});
+    this.setState({sending: true})
+  }
 
   render () {
     return (
@@ -102,7 +111,7 @@ handleChange = (event) => {
 
         </div>
         <div className="controls">
-          <input className="message" type="text" value={this.state.value} onChange={this.handleChange} placeholder="Type a message..."/>
+          <input className="message" type="text" value={this.getDisplay()} onChange={this.handleChange} placeholder="Type a message..."/>
           <button className="send" onClick={this.sendMessage} type="submit">Send</button>
         </div>
       </div>
