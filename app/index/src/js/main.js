@@ -20,8 +20,17 @@ socket.on('messages', function (msg) {
 */
 
 class ChatItem extends Component {
+
+  generateMessage = () => {
+    if (this.props.author === "") {
+      return ""
+    } else {
+      return `${this.props.author}: ${this.props.message}`
+    }
+  }
+
   render() {
-    return (<li>{this.props.author}: {this.props.msg}</li>)
+    return (<li>{this.generateMessage()}</li>)
   }
 }
 
@@ -29,7 +38,7 @@ class Message extends Component {
 
   createList = () => (
     this.props.messages.map( (item, index) => {
-      return (<ChatItem author={item.author} msg={item.message} key={index} />)
+      return (<ChatItem author={item.author} message={item.message} key={index} />)
     })
   )
 
@@ -50,9 +59,10 @@ class App extends Component {
 
     this.state = {
       currentUser: "Person 1",
+      currentMessage: "",
       messages: [{
-        message: "Hello",
-        author: "Bob"
+        message: "",
+        author: ""
       }]
     }
   }
@@ -71,9 +81,13 @@ class App extends Component {
     event.preventDefault()
     socket.emit('message:new', {
       author: this.state.currentUser,
-      message: "my super message"
+      message: this.state.currentMessage
     })
   }
+
+handleChange = (event) => {
+  this.setState({currentMessage: event.target.value});
+}
 
   render () {
     return (
@@ -88,7 +102,7 @@ class App extends Component {
 
         </div>
         <div className="controls">
-          <input className="message" type="text" placeholder="Type a message..."/>
+          <input className="message" type="text" value={this.state.value} onChange={this.handleChange} placeholder="Type a message..."/>
           <button className="send" onClick={this.sendMessage} type="submit">Send</button>
         </div>
       </div>
